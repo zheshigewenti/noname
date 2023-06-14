@@ -4239,7 +4239,6 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			//贾诩
 			rewansha:{
 				audio:'wansha',
-				audioname:['re_jiaxu','shen_simayi','boss_lvbu2'],
 				global:'rewansha_global',
 				trigger:{global:'dyingBegin'},
 				forced:true,
@@ -4289,7 +4288,7 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 				},
 			},
 			zhenlve:{
-				audio:2,
+				audio:'zhenlve',
 				trigger:{player:'useCard'},
 				forced:true,
 				filter:function(event){
@@ -4301,7 +4300,6 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			},
 			reluanwu:{
 				audio:'luanwu',
-				audioname:['re_jiaxu'],
 				unique:true,
 				enable:'phaseUse',
 				limited:true,
@@ -4374,7 +4372,8 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 				}
 			},
 			reweimu:{
-				audio:2,
+				audio:'weimu',
+				// audioname:['weimu1','weimu2'],
 				mod:{
 					targetEnabled:function(card){
 						if(get.type2(card)=='trick'&&get.color(card)=='black') return false;

@@ -107,7 +107,7 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			xiahouba:['male','shu',4,['rebaobian']],
 			yuanshu:['male','qun',4,['yongsi','weidi']],
 			sp_diaochan:['female','qun',3,['lihun','rebiyue']],
-			sp_zhaoyun:['male','qun',3,['ollongdan','chongzhen']],
+			sp_zhaoyun:['male','qun',4,['ollongdan','chongzhen']],
 			liuxie:['male','qun',3,['tianming','mizhao']],
 			zhugejin:['male','wu',3,['olhuanshi','olhongyuan','olmingzhe']],
 			zhugeke:['male','wu',3,['aocai','duwu']],
@@ -20103,16 +20103,16 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 					if((event.card.name!='sha'&&event.card.name!='shan')||(event.skill!='longdan_shan'&&event.skill!='longdan_sha'&&
 					event.skill!='fanghun_shan'&&event.skill!='fanghun_sha'&&event.skill!='ollongdan')) return false;
 					var target=lib.skill.chongzhen1.logTarget(event,player);
-					return target&&target.countGainableCards(player,'h')>0;
+					return target&&target.countGainableCards(player,'he')>0;
 				},
 				logTarget:function(event,player){
 					if(event.card.name=='sha') return event.targets[0];
 					return event.respondTo[0];
 				},
-				prompt2:'当你因发动〖龙胆〗而使用或打出【杀】或【闪】时，你可以获得对方的一张手牌。',
+				prompt2:'当你因发动〖龙胆〗而使用或打出【杀】或【闪】时，你可以获得对方的一张牌。',
 				content:function(){
 					var target=lib.skill.chongzhen1.logTarget(trigger,player);
-					player.gainPlayerCard(target,'h',true);
+					player.gainPlayerCard(target,'he',true);
 				}
 			},
 			chongzhen2:{
@@ -20121,10 +20121,10 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 				filter:function(event,player){
 					if(event.skill!='longdan_shan'&&event.skill!='longdan_sha'&&
 					event.skill!='fanghun_shan'&&event.skill!='fanghun_sha'&&event.skill!='ollongdan') return false;
-					return event.source&&event.source.countGainableCards(player,'h')>0;
+					return event.source&&event.source.countGainableCards(player,'he')>0;
 				},
 				logTarget:'source',
-				prompt2:'当你因发动〖龙胆〗而使用或打出【杀】或【闪】时，你可以获得对方的一张手牌。',
+				prompt2:'当你因发动〖龙胆〗而使用或打出【杀】或【闪】时，你可以获得对方的一张牌。',
 				content:function(){
 					player.gainPlayerCard(trigger.source,'h',true);
 				}

@@ -47,7 +47,7 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			re_guohuanghou:['female','wei',3,['rejiaozhao','redanxin']],
 			re_xiahoushi:['female','shu',3,['reqiaoshi','reyanyu']],
 			ol_lusu:['male','wu',3,['olhaoshi','oldimeng']],
-			re_jiaxu:['male','qun',3,['rewansha','reluanwu','reweimu']],
+			re_jiaxu:['male','qun',3,['zhenlve','rewansha','reluanwu','reweimu']],
 			re_guyong:['male','wu',3,['reshenxing','rebingyi']],
 			xin_zhonghui:['male','wei',4,['xinquanji','xinzili']],
 			re_caifuren:['female','qun',3,['reqieting','rexianzhou']],
@@ -4286,6 +4286,17 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 							});
 						},
 					},
+				},
+			},
+			zhenlve:{
+				audio:2,
+				trigger:{player:'useCard'},
+				forced:true,
+				filter:function(event){
+					return get.type(event.card)=='trick';
+				},
+				content:function(){
+					trigger.nowuxie=true;
 				},
 			},
 			reluanwu:{
@@ -14112,6 +14123,8 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			re_jiaxu:'界贾诩',
 			rewansha:'完杀',
 			rewansha_info:'锁定技。①你的回合内，不处于濒死状态的角色不能使用【桃】。②当有角色于你的回合内进入濒死状态时，你令其以外的所有其他角色的非锁定技失效直到此濒死状态结算结束。',
+			zhenlve:'缜略',
+			zhenlve_info:'锁定技。你的锦囊无法被无懈可击响应。',
 			reluanwu:'乱武',
 			reluanwu_info:'限定技，出牌阶段，你可令所有其他角色依次选择一项：①对距离最近（或之一）的角色使用一张【杀】；②失去1点体力。结算完成后，你可视为使用一张【杀】（无距离限制）。',
 			reweimu:'帷幕',

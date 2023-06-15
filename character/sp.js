@@ -20126,7 +20126,7 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 				logTarget:'source',
 				prompt2:'当你因发动〖龙胆〗而使用或打出【杀】或【闪】时，你可以获得对方的一张牌。',
 				content:function(){
-					player.gainPlayerCard(trigger.source,'h',true);
+					player.gainPlayerCard(trigger.source,'he',true);
 				}
 			},
 			lihun:{

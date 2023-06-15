@@ -6,14 +6,14 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 		characterSort:{
 			offline:{
 				offline_star:["sp_xiahoushi","jsp_zhaoyun","huangjinleishi","sp_pangtong","sp_daqiao","sp_ganning","sp_xiahoudun","sp_lvmeng","sp_zhangfei","sp_liubei"],
-				offline_sticker:['sp_gongsunzan','sp_simazhao','sp_wangyuanji','sp_xinxianying','sp_liuxie'],
-				offline_luanwu:["ns_lijue","ns_zhangji","ns_fanchou"],
-				offline_yongjian:["ns_chendao","yj_caoang","yj_caocao",'yj_liru','yj_caohong','yj_zhangfei','yongjian_ganning','yj_dongzhuo','yj_xuyou','yj_jiaxu','yj_zhenji'],
-				offline_jiangshanruguqi:['jsrg_liuhong','jsrg_hejin','jsrg_sunjian','jsrg_huangfusong','jsrg_xushao','jsrg_dongbai','jsrg_qiaoxuan','jsrg_yangbiao','jsrg_kongrong','jsrg_zhujun','jsrg_liubei','jsrg_wangyun','jsrg_liuyan','jsrg_caocao','jsrg_nanhualaoxian'],
-				offline_piracyE:['shen_jiaxu','pe_wangyun','pe_zhonghui','pe_sunchen','pe_mengda','pe_wenqin','ns_caoanmin','jiangfei','chendong','jiangqing','kongrong','jiling','tianfeng','mateng'],
-				offline_piracyS:['ns_jiaxu','longyufei','ps_guanyu','ps1059_guojia','ps2070_guojia','ps2063_zhaoyun','ps2067_zhaoyun','ps1062_zhouyu','ps2080_zhouyu','ps_caozhi','ps_jin_simayi','ps_caopi','ps_simayi','ps2068_simayi','ps_machao','ps_zhugeliang','ps2066_zhugeliang','ps_jiaxu','ps_lvbu','ps_shen_machao','jsp_liubei'],
-				offline_piracyK:['pk_sp_duyu'],
-				//offline_others:[""],
+				// offline_sticker:['sp_gongsunzan','sp_simazhao','sp_wangyuanji','sp_xinxianying','sp_liuxie'],
+				// offline_luanwu:["ns_lijue","ns_zhangji","ns_fanchou"],
+				// offline_yongjian:["ns_chendao","yj_caoang","yj_caocao",'yj_liru','yj_caohong','yj_zhangfei','yongjian_ganning','yj_dongzhuo','yj_xuyou','yj_jiaxu','yj_zhenji'],
+				offline_jiangshanruguqi:['jsrg_liuhong','jsrg_hejin','jsrg_sunjian','jsrg_huangfusong','jsrg_xushao','jsrg_dongbai','jsrg_qiaoxuan','jsrg_yangbiao','jsrg_kongrong','jsrg_zhujun','jsrg_liubei','jsrg_wangyun','jsrg_liuyan','jsrg_caocao','jsrg_nanhualaoxian']
+				// offline_piracyE:['shen_jiaxu','pe_wangyun','pe_zhonghui','pe_sunchen','pe_mengda','pe_wenqin','ns_caoanmin','jiangfei','chendong','jiangqing','kongrong','jiling','tianfeng','mateng'],
+				// offline_piracyS:['ns_jiaxu','longyufei','ps_guanyu','ps1059_guojia','ps2070_guojia','ps2063_zhaoyun','ps2067_zhaoyun','ps1062_zhouyu','ps2080_zhouyu','ps_caozhi','ps_jin_simayi','ps_caopi','ps_simayi','ps2068_simayi','ps_machao','ps_zhugeliang','ps2066_zhugeliang','ps_jiaxu','ps_lvbu','ps_shen_machao','jsp_liubei'],
+				// offline_piracyK:['pk_sp_duyu'],
+				//offline_others:[" "],
 			},
 		},
 		character:{
@@ -8486,15 +8486,15 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			sbpingjian_info:'你可以于满足你“访客”上的一个无技能标签或仅有锁定技标签的技能条件的时机发动此技能。你发动的技能结算结束后，若此技能位于你的“访客”中，则你选择移去一张“访客”。若移去的是本次发动技能的“访客”，你摸一张牌。',
 
 			offline_star:'桌游志·SP',
-			offline_sticker:'桌游志·贴纸',
-			offline_luanwu:'文和乱武',
-			offline_yongjian:'用间篇',
+			// offline_sticker:'桌游志·贴纸',
+			// offline_luanwu:'文和乱武',
+			// offline_yongjian:'用间篇',
 			offline_jiangshanruguqi:'江山如故·起',
-			offline_feihongyingxue:'飞鸿映雪',
-			offline_piracyE:'官盗E系列·战役篇',
-			offline_piracyS:'官盗S系列',
-			offline_piracyK:'官盗K系列',
-			offline_others:'线下其他系列',
+			// offline_feihongyingxue:'飞鸿映雪',
+			// offline_piracyE:'官盗E系列·战役篇',
+			// offline_piracyS:'官盗S系列',
+			// offline_piracyK:'官盗K系列',
+			// offline_others:'线下其他系列',
 		},
 	};
 });

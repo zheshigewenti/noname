@@ -107,7 +107,7 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 			xiahouba:['male','shu',4,['rebaobian']],
 			yuanshu:['male','qun',4,['yongsi','weidi']],
 			sp_diaochan:['female','qun',3,['lihun','rebiyue']],
-			sp_zhaoyun:['male','qun',4,['ollongdan','chongzhen','mashu']],
+			sp_zhaoyun:['male','qun',4,['ollongdan','chongzhen','chaofeng','mashu']],
 			liuxie:['male','qun',3,['tianming','mizhao']],
 			zhugejin:['male','wu',3,['olhuanshi','olhongyuan','olmingzhe']],
 			zhugeke:['male','wu',3,['aocai','duwu']],

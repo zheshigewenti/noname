@@ -1,4 +1,4 @@
-# Step Content 转 Async Content 指南
+# Step Content 转 Async Content(s) 指南
 
 本文整理 `setContent` 中旧式 `step` 写法与新式 `async` 写法的区别，并给出常见转换方法。适合在重构技能、事件 content、模式 start 流程时作为上下文。
 
@@ -53,6 +53,17 @@ async function
 ```
 
 所以二者最终都走 `ArrayCompiler`，差别主要在写法和等待方式。
+
+### 迁移目标：Async Content 或 Array Content
+
+迁移时按保持原有调度语义所需的等待方式选择：
+
+- 能通过明确的子事件 `await` 保持执行顺序，无需在函数内部调用 `await event.waitNext()`：转换为单个 Async Content。
+- 必须在函数内部调用 `await event.waitNext()`，等待当前事件的 `next` 队列整体结算后才能继续：转换为 Array Content，数组各项使用 async 函数（也称 async contents）。在需要等待队列的位置划分函数，由 `ArrayCompiler` 在每段函数结束后自动调用 `waitNext()`。
+
+这里判断的是迁移后的实际等待需求，不是旧代码中是否出现了 `waitNext()`；单个 async 函数返回后由编译器执行的 `waitNext()` 也不属于函数内部的等待。数组分段只等待当前事件的 `next` 队列，不会让改挂到 `after` 或其他事件队列的事件提前执行。
+
+后文的单函数示例适用于第一种情况。两种形式都需要核对原 step 边界的终止检查；无需内部 `waitNext()` 并不意味着合并后必然行为等价。
 
 ## Step Content 是什么
 
@@ -843,6 +854,7 @@ content: async function (event, trigger, player) {
 
 转换时逐项检查：
 
+- 是否按等待需求选择了单个 Async Content 或 Array Content；需要内部 `event.waitNext()` 的流程应改为数组分段
 - 每个会创建子事件的调用，后续代码是否依赖它完成；依赖就加 `await`
 - 如果事件被 `next.remove(...)` 后挂到 `after` 或别的事件 `next/after`，不要 `await`
 - `event.insertAfter(...)`、`player.showCharacter(...)`、`player.insertPhase(...)` 这类调度型调用通常只调用不等待

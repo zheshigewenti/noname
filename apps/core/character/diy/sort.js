@@ -5,6 +5,7 @@ const characterSort = {
 	diy_tieba: ["ns_zuoci", "ns_lvzhi", "ns_wangyun", "ns_nanhua", "ns_nanhua_left", "ns_nanhua_right", "ns_huamulan", "ns_huangzu", "ns_jinke", "ns_yanliang", "ns_wenchou", "ns_caocao", "ns_caocaosp", "ns_zhugeliang", "ns_wangyue", "ns_yuji", "ns_xinxianying", "ns_guanlu", "ns_simazhao", "ns_sunjian", "ns_duangui", "ns_zhangbao", "ns_masu", "ns_zhangxiu", "ns_lvmeng", "ns_shenpei", "ns_yujisp", "ns_yangyi", "ns_liuzhang", "ns_xinnanhua", "ns_luyusheng"],
 	diy_fakenews: ["diy_wenyang", "ns_zhangwei", "ns_caimao", "ns_chengpu", "ns_sundeng", "ns_duji", "ns_mengyou"],
 	diy_noname: ["huan_noname", "noname", "ns_shijian"],
+	xue_zhaoyun: ["xue_zhaoyun"],
 	diy_trashbin: ["junk_guanyu", "junk_zhangrang", "old_bulianshi", "ol_maliang", "junk_liubei", "junk_huangyueying", "junk_lidian", "junk_duanwei", "junk_xuyou", "junk_liuyan", "zhangren"],
 };
 
@@ -17,6 +18,7 @@ const characterSortTranslate = {
 	diy_yijiang3: "设计比赛2022",
 	diy_fakenews: "杀海流言",
 	diy_trashbin: "垃圾桶",
+	xue_zhaoyun: "血赵云",
 };
 
 export { characterSort, characterSortTranslate };

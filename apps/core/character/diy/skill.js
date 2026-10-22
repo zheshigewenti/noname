@@ -1,6 +1,27 @@
 // @ts-nocheck
 import { lib, game, ui, get, ai, _status } from "noname";
 
+/** 横扫：目标是否处于使用者攻击范围内，并且是【杀】/【决斗】的合法目标 */
+function henghsaoTarget(card, player, target) {
+	if (!card || !target || target === player || !target.isIn()) {
+		return false;
+	}
+	if (!player.inRange(target)) {
+		return false;
+	}
+	if (card.name === "sha") {
+		return true;
+	}
+	if (card.name === "juedou") {
+		const info = get.info(card);
+		if (typeof info.filterTarget === "function" && !info.filterTarget(card, player, target)) {
+			return false;
+		}
+		return true;
+	}
+	return false;
+}
+
 /** @type { importCharacterConfig["skill"] } */
 const skills = {
 	//幻小无
@@ -9458,6 +9479,100 @@ const skills = {
 			}
 		},
 	},
-};
+	//血赵云·冲阵：因龙胆使用/打出杀或闪后，对每个目标各获得其一张牌
+	xuechongzhen: {
+		audio: "chongzhen",
+		audioname: ["huan_zhaoyun", "sp_zhaoyun"],
+		trigger: { player: ["useCard", "respond"] },
+		frequent: true,
+		filter(event, player) {
+			if (event.card.name != "sha" && event.card.name != "shan") {
+				return false;
+			}
+			if (!event.skill || !event.skill.includes("longdan")) {
+				return false;
+			}
+			return get.info("xuechongzhen").logTarget(event, player).length > 0;
+		},
+		//横扫后【杀】可能有多个目标：对每个目标各冲一次
+		logTarget(event, player) {
+			if (event.name == "respond") {
+				return [event.source].filter(target => target && target !== player && target.countGainableCards(player, "he") > 0);
+			}
+			const targets = event.card.name == "sha" ? event.targets || [] : [event.respondTo?.[0]];
+			return targets.filter(target => target && target !== player && target.isIn() && target.countGainableCards(player, "he") > 0);
+		},
+		prompt2(event, player) {
+			const targets = get.info("xuechongzhen").logTarget(event, player);
+			if (targets.length == 1) {
+				return "获得" + get.translation(targets[0]) + "的一张牌";
+			}
+			return "依次获得" + get.translation(targets) + "各一张牌";
+		},
+		async content(event, trigger, player) {
+			const targets = get.info("xuechongzhen").logTarget(trigger, player).sortBySeat(player);
+			for (const target of targets) {
+				if (!target.isIn() || target.countGainableCards(player, "he") == 0) {
+					continue;
+				}
+				await player.gainPlayerCard(target, "he", true);
+			}
+		},
+		ai: {
+			combo: "ollongdan",
+			mingzhi: false,
+			effect: {
+				target(card, player, target, current) {
+					if (get.tag(card, "respondShan") || get.tag(card, "respondSha")) {
+						if (get.attitude(target, player) <= 0) {
+							if (current > 0) {
+								return;
+							}
+							if (target.countCards("h") == 0) {
+								return 1.6;
+							}
+							if (target.countCards("h") == 1) {
+								return 1.2;
+							}
+							if (target.countCards("h") == 2) {
+								return [0.8, 0.2, 0, -0.2];
+							}
+							return [0.4, 0.7, 0, -0.7];
+						}
+					}
+				},
+			},
+		},
+	},
+	//横扫：选目标时即可将【杀】或【决斗】指向攻击范围内的任意名角色
+	diyhengsao: {
+		audio: false,
+		forced: true,
+		locked: true,
+		mod: {
+			selectTarget(card, player, range) {
+				if (!card || (card.name != "sha" && card.name != "juedou")) {
+					return;
+				}
+				if (!range) {
+					return;
+				}
+				// 攻击范围内的角色数即为上限，至少保留 1
+				const num = Math.max(1, game.countPlayer(current => henghsaoTarget(card, player, current)));
+				range[0] = 1;
+				range[1] = num;
+			},
+			targetEnabled(card, player, target) {
+				if (!card || (card.name != "sha" && card.name != "juedou")) {
+					return;
+				}
+				return henghsaoTarget(card, player, target);
+			},
+		},
+		ai: {
+			// AI 默认只打一个目标，避免每张杀都无脑横扫
+			combo: "xuechongzhen",
+		},
+	},};
 
 export default skills;

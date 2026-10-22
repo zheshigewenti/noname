@@ -357,6 +357,12 @@ const translates = {
 	ns_shijian: "诗笺",
 	nspianwu: "翩舞",
 	nspianwu_info: "<font color=red>特殊效果：你的技能不会失效或失去。</font><br>锁定技，你于以下时机创建一个随机的触发技能：游戏开始后；当你受到伤害后；当你造成伤害时（三轮内）；你的回合结束时。然后你令一名角色获得此技能。以此法创建的技能每回合限发动五次。",
+	xue_zhaoyun: "血赵云",
+	xue_zhaoyun_prefix: "血",
+	xuechongzhen: "冲阵",
+	xuechongzhen_info: "当你因发动〖龙胆〗而使用或打出【杀】或【闪】时，你可以获得对方的一张牌。若此牌有多个目标，则依次获得每名目标各一张牌。",
+	diyhengsao: "横扫",
+	diyhengsao_info: "锁定技，你使用【杀】或【决斗】时，可以指定你攻击范围内的任意名角色为目标。",
 };
 
 export default translates;

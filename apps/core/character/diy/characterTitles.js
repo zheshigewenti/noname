@@ -46,6 +46,7 @@ export default {
 	ns_yangyi: "#p本因坊神策",
 	ns_liuzhang: "#r矮子剑薄荷糖",
 	ns_mengyou: "#g残昼厄夜",
+	xue_zhaoyun: "血染征袍",
 
 	//diy_wu_lvmeng: "#g假的别信",
 };

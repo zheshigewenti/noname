@@ -431,6 +431,12 @@ const characters = {
 		skills: ["chuanxin", "zfengshi"],
 		//xdm我打赢复活赛了，虽然在垃圾桶里
 	},
+	xue_zhaoyun: {
+		sex: "male",
+		group: "qun",
+		hp: 4,
+		skills: ["ollongdan", "xuechongzhen", "diyhengsao", "lianpo"],
+	},
 };
 
 export default characters;

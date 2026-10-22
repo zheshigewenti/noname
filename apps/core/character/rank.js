@@ -1228,6 +1228,7 @@ window.noname_character_rank = {
 		"pot_huanjie",
 		"tw_pot_huanjie",
 		"pot_zanghong",
+		"xue_zhaoyun",
 	],
 	b: [
 		"wangai",
